@@ -2,7 +2,7 @@ import React from 'react';
 
 function Square(props) {
     return (
-      <button className={props.winner ? "square winner" : "square"} onClick={props.onClick}>
+      <button className={"square" + (props.winner ? " winner" : "")} onClick={props.onClick}>
         {props.value}
       </button>
     );
