@@ -32,9 +32,13 @@ ol, ul {
     width: 34px;
 }
 
-    .square:focus {
-        outline: none;
-    }
+.square.winner {
+    background: #90ee8f;
+}
+
+.square:focus {
+    outline: none;
+}
 
 .kbd-navigation .square:focus {
     background: #ddd;
