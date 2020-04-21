@@ -34,7 +34,7 @@ function Game() {
     }
 
     const current = history[stepNumber];
-    const winner = calculateWinner(current.squares);
+    const winningSquares = calculateWinner(current.squares);
 
     const moves = history.map((step, move) => {
         const desc = move ?
@@ -48,8 +48,8 @@ function Game() {
     });
 
     let status;
-    if (winner) {
-        status = "Winner: " + winner;
+    if (winningSquares) {
+        status = "Winner: " + current.squares[winningSquares[0]];
     }
     else {
         status = "Next player: " + (xIsNext ? "X" : "O");
@@ -59,6 +59,7 @@ function Game() {
         <div className="game">
             <div className="game-board">
                 <Board
+                    winner={winningSquares}
                     squares={current.squares}
                     onClick={i => handleClick(i)}
                 />
@@ -85,7 +86,7 @@ function calculateWinner(squares) {
     for (let i = 0; i < lines.length; i++) {
         const [a, b, c] = lines[i];
         if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
-            return squares[a];
+            return lines[i];
         }
     }
     return null;

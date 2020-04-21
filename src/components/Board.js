@@ -3,9 +3,12 @@ import Square from './Square';
 
 function Board(props) {
 
+    console.log(props);
+
     function renderSquare(i) {
         return (
             <Square
+                winner={isWinningSquare(i, props.winner)}
                 value={props.squares[i]}
                 onClick={() => props.onClick(i)}
             />
@@ -31,6 +34,15 @@ function Board(props) {
             </div>
         </div>
     );
+}
+
+function isWinningSquare(i, winningSquares) {
+    if (winningSquares != null) {
+        if (winningSquares.indexOf(i) !== -1) {
+            return true;
+        }
+    }
+    return false;
 }
 
 export default Board;
